@@ -107,7 +107,7 @@ class AWaves extends HTMLElement {
   bindEvents() {
     window.addEventListener('resize', this.onResize.bind(this));
     window.addEventListener('mousemove', this.onMouseMove.bind(this));
-    this.addEventListener('touchmove', this.onTouchMove.bind(this));
+    this.addEventListener('touchmove', this.onTouchMove.bind(this), { passive: true });
   }
 
   onResize() {
@@ -120,7 +120,7 @@ class AWaves extends HTMLElement {
   }
 
   onTouchMove(e) {
-    e.preventDefault();
+    // No preventDefault: swallowing touchmove here blocks page scrolling on mobile.
     const touch = e.touches[0];
     this.updateMousePosition(touch.clientX, touch.clientY);
   }
@@ -313,29 +313,36 @@ customElements.define('a-waves', AWaves);
   setInterval(flicker, 180);
 })();
 
-/* Work section - subtle fade-in on scroll */
+/* Work section - subtle fade-in on scroll (background only; cards stay readable) */
 (function() {
   const section = document.getElementById('work');
   if (!section) return;
 
-  const hole = section.querySelector('a-hole');
-  const cards = section.querySelectorAll('.work-card-orbit');
-
   function updateAnimations() {
     const rect = section.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
-    const trigger = viewportHeight * 0.8;
-    const visible = rect.top < trigger;
+    const trigger = viewportHeight * 0.9;
     const progress = Math.max(0, Math.min(1, (trigger - rect.top) / (viewportHeight * 0.5)));
-    const opacity = 0.4 + progress * 0.6;
-
-    section.style.setProperty('--work-opacity', opacity);
-    cards.forEach((card) => {
-      card.style.opacity = opacity;
-    });
+    section.style.setProperty('--work-opacity', 0.85 + progress * 0.15);
   }
 
   window.addEventListener('scroll', updateAnimations, { passive: true });
   window.addEventListener('resize', updateAnimations);
   updateAnimations();
+})();
+
+/* Resume: hide the inline PDF viewer if the file isn't there yet */
+(function() {
+  const viewer = document.querySelector('.js-resume-viewer');
+  if (!viewer) return;
+
+  const obj = viewer.querySelector('object');
+  const src = obj && obj.getAttribute('data');
+  if (!src) return;
+
+  fetch(src, { method: 'HEAD' })
+    .then((res) => {
+      if (!res.ok) viewer.remove();
+    })
+    .catch(() => viewer.remove());
 })();
