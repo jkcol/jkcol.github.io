@@ -41,6 +41,7 @@
     </div>
     <nav class="header-nav" aria-label="Primary">
       <a href="#work">WORK</a>
+      <a href="#experience">EXPERIENCE</a>
       <a href="#about">ABOUT</a>
       <a href="#resume">RESUME</a>
       <a href="#contact">CONTACT</a>
@@ -119,9 +120,9 @@
               <h3>RISC-V Operating System Kernel</h3>
               <span class="work-badge">Live Demo</span>
             </div>
-            <p class="work-card-desc">A Unix-like kernel written from scratch in C and RV64 assembly. Sv39 three-level paging with per-process address spaces, preemptive multitasking, a custom KTFS filesystem, VirtIO block and console drivers, and an ELF loader. It boots under QEMU, mounts a filesystem from an emulated disk, and runs unmodified 1970s BSD games in user mode through real syscalls.</p>
+            <p class="work-card-desc">A Unix-like kernel written from scratch in C and RISC-V assembly. Preemptive multitasking, Sv39 paging with per-process address spaces, a read-write KTFS filesystem with write-back cache, and fork/exec/wait syscalls behind a custom shell that supports I/O redirection, piping, and background jobs. VirtIO block and UART drivers plus an ELF loader boot it to an interactive shell on QEMU — where it runs unmodified 1970s BSD games in user mode.</p>
             <ul class="work-tags">
-              <li>C</li><li>RV64 Assembly</li><li>Sv39 Paging</li><li>Filesystems</li><li>QEMU</li>
+              <li>C</li><li>RISC-V Assembly</li><li>Sv39 Paging</li><li>Filesystems</li><li>QEMU</li>
             </ul>
             <div class="work-links">
               <a class="work-link work-link-primary" href="https://jkcol.github.io/operating-systems-kernel/" target="_blank" rel="noopener noreferrer">Watch it boot <span aria-hidden="true">→</span></a>
@@ -137,9 +138,9 @@
               <h3>AlignAI</h3>
               <span class="work-badge">Live Demo</span>
             </div>
-            <p class="work-card-desc">A real-time exercise form coach that compares your webcam pose against a reference video entirely in-browser, using MediaPipe compiled to WebAssembly. Scores form per limb, counts reps, and delivers AI voice coaching — no server, no API keys. Built with a team at HackIllinois.</p>
+            <p class="work-card-desc">A real-time exercise form coach, built with a 3-person team at HackIllinois. I wrote the pose-comparison engine in Python — aligning your workout against a reference with dynamic time warping over normalized joint angles — and served it as a REST API on Modal. Also built the Vitest and Playwright testing stack for the React/TypeScript app, and cut search latency with a prefix-aware LRU cache in front of a third-party exercise API.</p>
             <ul class="work-tags">
-              <li>Python</li><li>MediaPipe</li><li>WebAssembly</li><li>Computer Vision</li>
+              <li>Python</li><li>Dynamic Time Warping</li><li>Modal</li><li>React</li><li>Playwright</li>
             </ul>
             <div class="work-links">
               <a class="work-link work-link-primary" href="https://jkcol.github.io/AlignAI/" target="_blank" rel="noopener noreferrer">Try it live <span aria-hidden="true">→</span></a>
@@ -240,6 +241,73 @@
     </div>
   </section>
 
+  <!-- Experience Section -->
+  <section id="experience" class="exp-section">
+    <div class="exp-inner">
+      <h2 class="exp-heading">Experience</h2>
+
+      <article class="exp-role">
+        <div class="exp-role-head">
+          <div>
+            <h3>Merkaloop</h3>
+            <p class="exp-role-title">Software Engineering Intern · Remote</p>
+          </div>
+          <p class="exp-dates">Jun 2026 — Present</p>
+        </div>
+        <ul class="exp-bullets">
+          <li>Translated business requirements into a rules-based <strong>TypeScript</strong> pricing engine that values used lab equipment from retail-price anchors, depreciation curves, and condition modifiers, returning price ranges with confidence scores.</li>
+          <li>Debugged a currency-conversion defect in the calibration pipeline that was silently discarding every EUR-priced listing, and added versioned, append-only database tables so each valuation is reproducible and auditable.</li>
+          <li>Fixed a checkout race condition in the <strong>Stripe</strong> payment flow that could sell one unit to two buyers, replacing a read-then-write with an atomic <strong>PostgreSQL</strong> update.</li>
+          <li>Built an LLM agent that calls live web search to find comparable competitor listings for <strong>89%</strong> of catalog items and surfaces the lowest price to guide seller pricing.</li>
+        </ul>
+      </article>
+
+      <article class="exp-role">
+        <div class="exp-role-head">
+          <div>
+            <h3>Printech Workshop</h3>
+            <p class="exp-role-title">Software Engineering Intern · Chicago, IL</p>
+          </div>
+          <p class="exp-dates">Apr 2026 — Jun 2026</p>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built a full-stack ERP web app with <strong>Python (FastAPI)</strong> and <strong>Node.js</strong>, integrating the Wix and Discord REST APIs to unify order, inventory, and production data for <strong>250+</strong> products and save roughly <strong>10 hrs/week</strong> of manual work.</li>
+          <li>Designed a demand forecasting model over historical sales that ranks products by projected demand to set the production queue, cutting top-seller stockouts from <strong>25 to 2</strong> per month.</li>
+          <li>Wrote a job scheduler that groups print jobs sharing machine settings, reducing press recalibrations from <strong>9 to 3</strong> per shift and recovering <strong>80 min/day</strong>.</li>
+        </ul>
+      </article>
+
+      <article class="exp-role">
+        <div class="exp-role-head">
+          <div>
+            <h3>US Navy</h3>
+            <p class="exp-role-title">Software Engineering Intern (Contract) · Lakehurst, NJ</p>
+          </div>
+          <p class="exp-dates">May 2024 — Aug 2024</p>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed a <strong>Python</strong> and <strong>PostgreSQL</strong> business system automating support-equipment tracking for VH-92 helicopter operations, eliminating <strong>80%</strong> of manual data entry.</li>
+          <li>Containerized ETL pipelines with <strong>Docker</strong> and set up <strong>CI/CD</strong> workflows for automated build, test, and deployment, cutting release time by <strong>50%</strong>.</li>
+        </ul>
+      </article>
+
+      <div class="exp-extras">
+        <div class="exp-extra">
+          <h4>Education</h4>
+          <p>B.S. Computer Engineering, Minor in Statistics<br>University of Illinois Urbana-Champaign · Expected Dec 2026</p>
+        </div>
+        <div class="exp-extra">
+          <h4>Honors</h4>
+          <p>USACO Gold Division<br>Holonyak Scholarship ($5,000)</p>
+        </div>
+        <div class="exp-extra">
+          <h4>Relevant Coursework</h4>
+          <p>Operating Systems · Distributed Systems · Algorithms &amp; Models of Computation · Machine Learning Systems · Deep Learning for Computer Vision · Database Systems</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About Section - Rays background + Content -->
   <section id="about" class="about-section about-section-hole">
     <div class="about-rays-bg" aria-hidden="true">
@@ -251,6 +319,7 @@
       <img src="assets/jayden-kim.png" alt="Jayden Kim" class="about-photo" width="200" height="200">
       <div class="about-content">
         <p>I'm a Computer Engineering student at UIUC, graduating December 2026. I like working at both ends of the stack: I've written a Unix-like kernel in C and RISC-V assembly, wired a camera to an HDMI display in SystemVerilog, built a Transformer from scratch in PyTorch, and shipped React and FastAPI apps on top of all of it.</p>
+        <p>I've spent the last three summers interning as a software engineer — a pricing engine and an LLM sourcing agent at Merkaloop, a full-stack ERP with demand forecasting at Printech Workshop, and equipment-tracking systems for VH-92 helicopter operations with the US Navy.</p>
         <p>The through-line is wanting to know how the layer underneath actually works — which is usually how I end up building it myself.</p>
         <p class="about-open">Open to new-grad software engineering roles in Chicago, NYC, and the Bay Area.</p>
       </div>
@@ -261,7 +330,7 @@
   <section id="resume" class="resume-section">
     <div class="resume-inner">
       <h2>Resume</h2>
-      <p class="resume-lede">The one-page version — coursework, experience, and skills.</p>
+      <p class="resume-lede">The one-page version — experience, coursework, and skills.</p>
       <div class="resume-actions">
         <a href="assets/jayden-kim-resume.pdf" class="btn btn-primary" download>Download PDF</a>
         <a href="assets/jayden-kim-resume.pdf" class="btn" target="_blank" rel="noopener noreferrer">Open in new tab</a>

@@ -754,6 +754,152 @@ a-waves svg path {
 }
 
 /* ============================================================
+   Experience Section
+   ============================================================ */
+.exp-section {
+  position: relative;
+  z-index: 10;
+  padding: 4.5rem 2rem;
+  border-top: 4px solid var(--menu-line);
+  border-bottom: 4px solid var(--menu-line);
+}
+
+.exp-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.exp-heading {
+  font-family: 'Martian Mono', monospace;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.exp-role {
+  border: 3px solid var(--text);
+  background: var(--accent);
+  padding: 1.75rem 1.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exp-role:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--text);
+}
+
+.exp-role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 3px solid var(--text);
+}
+
+.exp-role-head h3 {
+  font-family: 'Martian Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+}
+
+.exp-role-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.exp-dates {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.35rem 0.6rem;
+  border: 2px solid var(--text);
+}
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.exp-bullets li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.exp-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: var(--text);
+}
+
+.exp-bullets strong {
+  font-weight: 700;
+  border-bottom: 2px solid var(--text);
+}
+
+.exp-extras {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 3px solid var(--menu-line);
+}
+
+.exp-extra h4 {
+  font-family: 'Martian Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--text);
+}
+
+.exp-extra p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .exp-extras {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .exp-section {
+    padding: 3rem 1.25rem;
+  }
+
+  .exp-role {
+    padding: 1.35rem 1.25rem 1.25rem;
+  }
+
+  .exp-dates {
+    white-space: normal;
+  }
+}
+
+/* ============================================================
    About Section - Rays background
    ============================================================ */
 .about-section-hole {
