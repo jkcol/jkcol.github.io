@@ -55,7 +55,7 @@
         <li>
           <span class="wip">In progress</span>
           <strong>Vision-Guided Camera Gimbal</strong> —
-          Firmware and a custom PCB for a two-axis gimbal that tracks a soccer ball on its own, with an STM32 driving brushless motors in a closed loop.
+          Firmware and vision for a two-axis gimbal that tracks a soccer ball on its own, with an STM32 closing the loop on two brushless motors. Senior design.
         </li>
         <li>
           <span class="wip">In progress</span>
@@ -72,7 +72,7 @@
         </li>
         <li>
           <a href="https://github.com/jkcol/fpga-video-pipeline" target="_blank" rel="noopener noreferrer">FPGA Video Pipeline</a> —
-          A camera-to-HDMI display pipeline in SystemVerilog, with a hardware text-overlay engine driven over AXI4-Lite.
+          A camera-to-HDMI display pipeline in SystemVerilog, with a hardware text-overlay engine driven over AXI4-Lite. ECE 385 final project.
         </li>
         <li>
           <a href="https://github.com/jkcol/Text_Classification" target="_blank" rel="noopener noreferrer">Duplicate-Question Detection</a> —
@@ -93,8 +93,9 @@
       </ul>
 
       <h3>Vision-Guided Camera Gimbal <span class="wip">In progress</span></h3>
-      <p>A two-axis gimbal that finds a soccer ball and keeps it centered without anyone driving it. A camera on the gimbal streams frames to a laptop, an object-detection model locates the ball, and the resulting movement commands go over Ethernet to a custom PCB that closes the loop on two brushless motors — with a laser kept on the ball as the visible proof it's tracking.</p>
-      <p>The board and its firmware are my side of it. An STM32 runs the state machine and commands the motor driver over PWM, with a non-volatile memory IC holding motor position and calibration across power cycles. The 24&nbsp;V input feeds an inverter stage for the motors and a buck converter down to 5&nbsp;V and then 3.3&nbsp;V for the logic, with a PI filter — sized in LTSpice against the inverter's 25&nbsp;kHz switching — keeping that switching noise off the rail the analog signals reference, plus Schottky reverse-polarity and TVS protection. The targets we're building to: hold the ball inside the center 80% of the frame for 30 seconds, update position at least 5 times a second, and re-center within 1 second of the ball re-entering frame.</p>
+      <p>A two-axis gimbal that finds a soccer ball and keeps it centered without anyone driving it — my senior design project (ECE 445) at UIUC. A camera on the gimbal streams frames to a laptop, an object-detection model locates the ball, and the resulting movement commands go over Ethernet to a custom PCB that closes the loop on two brushless motors, with a laser kept on the ball as the visible proof it's tracking.</p>
+      <p>I work on the firmware and part of the vision. The firmware is an STM32 running the board's state machine: commanding the motor driver over PWM, handling the link back to the laptop, and persisting motor position and calibration to a non-volatile memory IC so the gimbal doesn't lose its bearings across power cycles. On the vision side, detecting the ball and turning its position in frame into the movement commands the board acts on.</p>
+      <p>It runs on a custom 24&nbsp;V board that feeds an inverter stage for the motors and steps down to 5&nbsp;V and then 3.3&nbsp;V for the logic, with a PI filter sized against the inverter's 25&nbsp;kHz switching to keep that noise off the rail the analog signals reference. We're building to three targets: hold the ball inside the center 80% of the frame for 30 seconds, update position at least 5 times a second, and re-center within 1 second of the ball re-entering frame.</p>
 
       <h3>Persistence-Aware MoE Serving <span class="wip">In progress</span></h3>
       <p>Mixture-of-experts models route each token to a few experts, and that routing is lopsided: in OLMoE, a small handful of experts absorb a disproportionate share of the tokens, so one GPU queues up while others idle. The usual fix is replicating hot experts, but a replica you create for a hotspot that evaporates has cost you transfer time and memory for nothing.</p>
