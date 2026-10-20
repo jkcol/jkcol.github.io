@@ -215,6 +215,30 @@ p + p {
   color: var(--muted);
 }
 
+/* "In progress" marker */
+.wip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.05rem 0.4rem;
+  margin-right: 0.35rem;
+  vertical-align: 0.08em;
+  white-space: nowrap;
+}
+
+h3 .wip {
+  margin-right: 0;
+  margin-left: 0.45rem;
+  font-weight: 400;
+}
+
+.index li strong {
+  font-weight: 600;
+}
+
 /* Work index */
 .index {
   list-style: none;

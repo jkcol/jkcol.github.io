@@ -45,13 +45,23 @@
   <main id="main">
 
     <section class="intro">
-      <p>I'm a Computer Engineering student at the University of Illinois Urbana-Champaign, graduating in December 2026. I've written a Unix-like kernel in C and RISC-V assembly, wired a camera to an HDMI display in SystemVerilog, built a Transformer from scratch in PyTorch, and shipped React and FastAPI apps on top of all of it. I've spent the last three summers interning as a software engineer.</p>
+      <p>I'm a Computer Engineering student at the University of Illinois Urbana-Champaign, graduating in December 2026. I've written a Unix-like kernel in C and RISC-V assembly, wired a camera to an HDMI display in SystemVerilog, built a Transformer from scratch in PyTorch, and shipped React and FastAPI apps on top of all of it. I've spent the last three summers interning as a software engineer. Right now I'm writing firmware for a vision-guided camera gimbal and working on mixture-of-experts serving across mismatched GPUs.</p>
       <p class="availability">Looking for new-grad software engineering roles in Chicago, NYC, and the Bay Area. Reach me at <a href="mailto:jaydenkim311@gmail.com">jaydenkim311@gmail.com</a>.</p>
     </section>
 
     <section id="work">
       <h2>Work</h2>
       <ul class="index">
+        <li>
+          <span class="wip">In progress</span>
+          <strong>Vision-Guided Camera Gimbal</strong> —
+          Firmware and a custom PCB for a two-axis gimbal that tracks a soccer ball on its own, with an STM32 driving brushless motors in a closed loop.
+        </li>
+        <li>
+          <span class="wip">In progress</span>
+          <strong>Persistence-Aware MoE Serving</strong> —
+          Putting an idle second GPU to work on mixture-of-experts inference by replicating hot experts onto it — but only when demand looks likely to last.
+        </li>
         <li>
           <a href="https://jkcol.github.io/operating-systems-kernel/" target="_blank" rel="noopener noreferrer">Operating System Kernel</a> —
           I wrote a Unix-like kernel from scratch in C and RISC-V assembly. It boots to an interactive shell and runs unmodified 1970s BSD games in user mode.
@@ -81,6 +91,14 @@
           A course-planning and degree-progress app for UIUC students, in React and TypeScript.
         </li>
       </ul>
+
+      <h3>Vision-Guided Camera Gimbal <span class="wip">In progress</span></h3>
+      <p>A two-axis gimbal that finds a soccer ball and keeps it centered without anyone driving it. A camera on the gimbal streams frames to a laptop, an object-detection model locates the ball, and the resulting movement commands go over Ethernet to a custom PCB that closes the loop on two brushless motors — with a laser kept on the ball as the visible proof it's tracking.</p>
+      <p>The board and its firmware are my side of it. An STM32 runs the state machine and commands the motor driver over PWM, with a non-volatile memory IC holding motor position and calibration across power cycles. The 24&nbsp;V input feeds an inverter stage for the motors and a buck converter down to 5&nbsp;V and then 3.3&nbsp;V for the logic, with a PI filter — sized in LTSpice against the inverter's 25&nbsp;kHz switching — keeping that switching noise off the rail the analog signals reference, plus Schottky reverse-polarity and TVS protection. The targets we're building to: hold the ball inside the center 80% of the frame for 30 seconds, update position at least 5 times a second, and re-center within 1 second of the ball re-entering frame.</p>
+
+      <h3>Persistence-Aware MoE Serving <span class="wip">In progress</span></h3>
+      <p>Mixture-of-experts models route each token to a few experts, and that routing is lopsided: in OLMoE, a small handful of experts absorb a disproportionate share of the tokens, so one GPU queues up while others idle. The usual fix is replicating hot experts, but a replica you create for a hotspot that evaporates has cost you transfer time and memory for nothing.</p>
+      <p>So we measured whether the imbalance actually persists. Routing patterns within a single workload have about 0.96 cosine similarity, against roughly 0.67 across different workloads — the hotspots are recurring structure, not noise. The system we're building splits the decision in two: a slow path that creates a replica only when expected benefit over a persistence horizon beats the transfer and memory cost, and a fast path that spreads tokens across whatever replicas exist based on live queueing and profiled execution time. The target is the case where you have one strong GPU and one older one sitting idle — we're evaluating on a 4090 and a 3080 with a trace-replay executor. A course project with four teammates.</p>
 
       <h3>Operating System Kernel</h3>
       <p>I wrote a Unix-like kernel from scratch in C and RISC-V assembly. It does preemptive multitasking, Sv39 three-level paging with a separate address space per process, and a read-write filesystem (KTFS) with a write-back cache. On top of that sit <code>fork</code>, <code>exec</code>, and <code>wait</code>, and a shell of my own that handles I/O redirection, piping, and background jobs.</p>
