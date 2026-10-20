@@ -24,9 +24,10 @@
   <header class="site-header">
     <a href="#" class="site-name">jayden kim</a>
     <nav aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
       <a href="assets/jayden-kim-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     </nav>
   </header>
@@ -47,6 +48,54 @@
     <section class="intro">
       <p>I'm a Computer Engineering student at the University of Illinois Urbana-Champaign, graduating in December 2026. I've written a Unix-like kernel in C and RISC-V assembly, wired a camera to an HDMI display in SystemVerilog, built a Transformer from scratch in PyTorch, and shipped React and FastAPI apps on top of all of it. I've spent the last three summers interning as a software engineer. Right now I'm writing firmware for a vision-guided camera gimbal and working on mixture-of-experts serving across mismatched GPUs.</p>
       <p class="availability">Looking for new-grad software engineering roles in Chicago, NYC, and the Bay Area. Reach me at <a href="mailto:jaydenkim311@gmail.com">jaydenkim311@gmail.com</a>.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I'm looking for new-grad software engineering roles starting after December 2026, and I'm always happy to talk about kernels, models, or anything in between.</p>
+      <p class="links">
+        <a href="mailto:jaydenkim311@gmail.com">jaydenkim311@gmail.com</a>
+        <a href="https://github.com/jkcol" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/jaydenkimm" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="assets/jayden-kim-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+      </p>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>The through-line in what I build is wanting to know how the layer underneath actually works — which is usually how I end up building it myself. That's how I got to writing a kernel instead of reading about one, and to implementing multi-head attention and a tokenizer by hand instead of importing <code>nn.Transformer</code>.</p>
+      <p>At UIUC I'm doing a B.S. in Computer Engineering with a minor in Statistics, with coursework in operating systems, distributed systems, algorithms, machine learning systems, deep learning for computer vision, and databases. I competed in USACO Gold Division and hold the Holonyak Scholarship.</p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="role">
+        <h3>Merkaloop <span>Software Engineering Intern · Jun 2026 – Present</span></h3>
+        <ul>
+          <li>Built a rules-based TypeScript pricing engine that values used lab equipment from retail anchors, depreciation curves, and condition modifiers, returning price ranges with confidence scores.</li>
+          <li>Tracked down a currency-conversion bug that was silently dropping every EUR-priced listing, and added versioned, append-only tables so each valuation is reproducible.</li>
+          <li>Fixed a Stripe checkout race that could sell one unit to two buyers, replacing a read-then-write with an atomic PostgreSQL update.</li>
+          <li>Built an LLM agent that searches the live web for comparable competitor listings, covering 89% of the catalog.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>Printech Workshop <span>Software Engineering Intern · Apr – Jun 2026</span></h3>
+        <ul>
+          <li>Built a full-stack ERP in FastAPI and Node.js, pulling the Wix and Discord APIs together to unify order, inventory, and production data for 250+ products and save about 10 hours a week of manual work.</li>
+          <li>Designed a demand forecasting model that sets the production queue by projected demand, cutting top-seller stockouts from 25 a month to 2.</li>
+          <li>Wrote a scheduler that groups print jobs by machine settings, dropping press recalibrations from 9 per shift to 3 and recovering 80 minutes a day.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <h3>US Navy <span>Software Engineering Intern (Contract) · May – Aug 2024</span></h3>
+        <ul>
+          <li>Built a Python and PostgreSQL system automating support-equipment tracking for VH-92 helicopter operations, eliminating 80% of manual data entry.</li>
+          <li>Containerized ETL pipelines with Docker and set up CI/CD for automated build, test, and deploy, halving release time.</li>
+        </ul>
+      </div>
     </section>
 
     <section id="work">
@@ -110,54 +159,6 @@
       <p>I also set up the testing stack for the React and TypeScript frontend — Vitest for units, Playwright end-to-end — and cut search latency with a prefix-aware LRU cache in front of a third-party exercise API, with client-side debouncing that cancels stale requests. <a href="https://jkcol.github.io/AlignAI/" target="_blank" rel="noopener noreferrer">Try the demo</a> · <a href="https://github.com/jkcol/AlignAI" target="_blank" rel="noopener noreferrer">Source</a></p>
 
       <p class="more"><a href="https://github.com/jkcol?tab=repositories" target="_blank" rel="noopener noreferrer">Everything else on GitHub</a></p>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="role">
-        <h3>Merkaloop <span>Software Engineering Intern · Jun 2026 – Present</span></h3>
-        <ul>
-          <li>Built a rules-based TypeScript pricing engine that values used lab equipment from retail anchors, depreciation curves, and condition modifiers, returning price ranges with confidence scores.</li>
-          <li>Tracked down a currency-conversion bug that was silently dropping every EUR-priced listing, and added versioned, append-only tables so each valuation is reproducible.</li>
-          <li>Fixed a Stripe checkout race that could sell one unit to two buyers, replacing a read-then-write with an atomic PostgreSQL update.</li>
-          <li>Built an LLM agent that searches the live web for comparable competitor listings, covering 89% of the catalog.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>Printech Workshop <span>Software Engineering Intern · Apr – Jun 2026</span></h3>
-        <ul>
-          <li>Built a full-stack ERP in FastAPI and Node.js, pulling the Wix and Discord APIs together to unify order, inventory, and production data for 250+ products and save about 10 hours a week of manual work.</li>
-          <li>Designed a demand forecasting model that sets the production queue by projected demand, cutting top-seller stockouts from 25 a month to 2.</li>
-          <li>Wrote a scheduler that groups print jobs by machine settings, dropping press recalibrations from 9 per shift to 3 and recovering 80 minutes a day.</li>
-        </ul>
-      </div>
-
-      <div class="role">
-        <h3>US Navy <span>Software Engineering Intern (Contract) · May – Aug 2024</span></h3>
-        <ul>
-          <li>Built a Python and PostgreSQL system automating support-equipment tracking for VH-92 helicopter operations, eliminating 80% of manual data entry.</li>
-          <li>Containerized ETL pipelines with Docker and set up CI/CD for automated build, test, and deploy, halving release time.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>The through-line in what I build is wanting to know how the layer underneath actually works — which is usually how I end up building it myself. That's how I got to writing a kernel instead of reading about one, and to implementing multi-head attention and a tokenizer by hand instead of importing <code>nn.Transformer</code>.</p>
-      <p>At UIUC I'm doing a B.S. in Computer Engineering with a minor in Statistics, with coursework in operating systems, distributed systems, algorithms, machine learning systems, deep learning for computer vision, and databases. I competed in USACO Gold Division and hold the Holonyak Scholarship.</p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>I'm looking for new-grad software engineering roles starting after December 2026, and I'm always happy to talk about kernels, models, or anything in between.</p>
-      <p class="links">
-        <a href="mailto:jaydenkim311@gmail.com">jaydenkim311@gmail.com</a>
-        <a href="https://github.com/jkcol" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/jaydenkimm" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="assets/jayden-kim-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-      </p>
     </section>
 
   </main>
