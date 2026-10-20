@@ -109,7 +109,7 @@
         <li>
           <span class="wip">In progress</span>
           <strong>Persistence-Aware MoE Serving</strong> —
-          Putting an idle second GPU to work on mixture-of-experts inference by replicating hot experts onto it — but only when demand looks likely to last.
+          Putting an idle second GPU to work on mixture-of-experts inference by replicating hot experts onto it — but only when demand looks likely to last. ML systems coursework.
         </li>
         <li>
           <a href="https://jkcol.github.io/operating-systems-kernel/" target="_blank" rel="noopener noreferrer">Operating System Kernel</a> —
@@ -148,7 +148,7 @@
 
       <h3>Persistence-Aware MoE Serving <span class="wip">In progress</span></h3>
       <p>Mixture-of-experts models route each token to a few experts, and that routing is lopsided: in OLMoE, a small handful of experts absorb a disproportionate share of the tokens, so one GPU queues up while others idle. The usual fix is replicating hot experts, but a replica you create for a hotspot that evaporates has cost you transfer time and memory for nothing.</p>
-      <p>So we measured whether the imbalance actually persists. Routing patterns within a single workload have about 0.96 cosine similarity, against roughly 0.67 across different workloads — the hotspots are recurring structure, not noise. The system we're building splits the decision in two: a slow path that creates a replica only when expected benefit over a persistence horizon beats the transfer and memory cost, and a fast path that spreads tokens across whatever replicas exist based on live queueing and profiled execution time. The target is the case where you have one strong GPU and one older one sitting idle — we're evaluating on a 4090 and a 3080 with a trace-replay executor. A course project with four teammates.</p>
+      <p>So we measured whether the imbalance actually persists. Routing patterns within a single workload have about 0.96 cosine similarity, against roughly 0.67 across different workloads — the hotspots are recurring structure, not noise. The system we're building splits the decision in two: a slow path that creates a replica only when expected benefit over a persistence horizon beats the transfer and memory cost, and a fast path that spreads tokens across whatever replicas exist based on live queueing and profiled execution time. The target is the case where you have one strong GPU and one older one sitting idle — we're evaluating on a 4090 and a 3080 with a trace-replay executor. A CS 498 ML Systems project, with four teammates.</p>
 
       <h3>Operating System Kernel</h3>
       <p>I wrote a Unix-like kernel from scratch in C and RISC-V assembly. It does preemptive multitasking, Sv39 three-level paging with a separate address space per process, and a read-write filesystem (KTFS) with a write-back cache. On top of that sit <code>fork</code>, <code>exec</code>, and <code>wait</code>, and a shell of my own that handles I/O redirection, piping, and background jobs.</p>
